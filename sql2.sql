@@ -1,4 +1,3 @@
-/* a. Dados completos de pessoas fisicas */
 SELECT 
 	idpessoa, 
 	nome, 
@@ -16,8 +15,6 @@ INNER JOIN
 WHERE
 	idpessoa = Pessoa_idPessoa
 
-
-/* b. Dados completos de pessoas jur�dicas */
 SELECT
 	idpessoa, 
 	nome, 
@@ -35,8 +32,6 @@ INNER JOIN
 WHERE 
 	idPessoa = Pessoa_idPessoa
 
-
-/* c. Movimenta��es de entrada, com produto, fornecedor, quantidade, pre�o unit�rio e valor total */
 SELECT
     mov.tipo AS TIPO_MOVIMENTA��O,
     pro.nome AS PRODUTO,
@@ -54,7 +49,6 @@ WHERE
     tipo = 'E';
 
 
-/* d. Movimenta��es de sa�da, com produto, comprador, quantidade, pre�o unit�rio e valor total */
 SELECT
     mov.tipo AS TIPO_MOVIMENTA��O,
     pro.nome AS PRODUTO,
@@ -72,7 +66,6 @@ WHERE
     tipo = 'S';
 
 
-/* e. Valor total das entradas agrupadas por produto */
 SELECT
     pro.nome AS PRODUTO_ENTRADA,
     SUM(mov.quantidade) AS QTDE_TOTAL,
@@ -89,7 +82,6 @@ GROUP BY
     pro.nome
 
 
-/* f. Valor total das sa�das agrupadas por produto */
 SELECT
     pro.nome AS PRODUTO_SAIDA,
     SUM(mov.quantidade) AS QTDE_TOTAL,
@@ -106,7 +98,6 @@ GROUP BY
     pro.nome
 
 
-/* g. Operadores que n�o efetuaram movimenta��es de entrada (compra) */
 SELECT
 	usu.login AS OPERADOR
 FROM
@@ -122,7 +113,6 @@ WHERE
     );
 
 
-/* h. Valor total de entrada, agrupado por operador */
 SELECT
     usu.login AS OPERADOR_ENTRADA,
     SUM(mov.quantidade) AS QTDE_TOTAL,
@@ -140,7 +130,6 @@ GROUP BY
     usu.login
 
 
-/* i. Valor total de sa�da, agrupado por operador */
 SELECT
     usu.login AS OPERADOR_SAIDA,
     SUM(mov.quantidade) AS QTDE_TOTAL,
@@ -158,7 +147,6 @@ GROUP BY
     usu.login
 
 
-/* j. Valor m�dio de venda por produto, utilizando m�dia ponderada */
 SELECT
     pro.nome AS PRODUTO_SAIDA,
     SUM(mov.quantidade) AS QTDE_TOTAL,
